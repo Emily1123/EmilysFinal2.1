@@ -5,7 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 876cee4571226784880f14d00ea5b727
+  - enabled: 1
+    path: Assets/Scenes/Mode.unity
+    guid: 2a3db75af8ba30243ad1afd9c13204d5
+  - enabled: 1
+    path: Assets/Scenes/2PlayerControls.unity
+    guid: e700fd4b12a89ac4ba236c46632b5832
+  - enabled: 1
+    path: Assets/Scenes/Difficulty.unity
+    guid: 8ed647b1e3971e842a04b064151fe03d
+  - enabled: 1
+    path: Assets/Scenes/SingleControls.unity
+    guid: 69c4dcd9966ccdd40924a81362debea7
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: a6683825ece4b194e990f0fd1b6f6e49
+  - enabled: 1
+    path: Assets/Scenes/Boxing.unity
+    guid: 4c2a6a0e67d188e43a38d649d915d084
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: d78e2125468d1274f8f9b91b557fdb66
+  - enabled: 1
+    path: Assets/Scenes/Fantasy.unity
+    guid: 1534f68bba4aac74cab1889aab467df3
+  - enabled: 1
+    path: Assets/Scenes/Industry.unity
+    guid: 25cc5ec521b218343aff6551ec1290b3
+  - enabled: 1
+    path: Assets/Scenes/Space.unity
+    guid: 4955d489c5abf7b40adbaee2cdd825e9
   m_configObjects: {}
