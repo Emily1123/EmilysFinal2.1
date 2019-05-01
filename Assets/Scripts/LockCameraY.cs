@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class LockCameraY : MonoBehaviour
+[ExecuteInEditMode]
+[SaveDuringPlay]
+[AddComponentMenu("")]
+public class LockCameraY : CinemachineExtension
 {
     [Tooltip("Lock the camera's Z position to this value")]
     public float m_YPosition = 1;
-    public float m_XPosition = 1;
-    public float m_ZPosition = 1;
 
-    public void LockCam()
+    protected override void PostPipelineStageCallback(
+        CinemachineVirtualCameraBase vcam,
+        CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
     {
-        m_YPosition = Camera.main.transform.localPosition.y;
-        m_XPosition = Camera.main.transform.localPosition.x;
-        m_ZPosition = Camera.main.transform.localPosition.z;
+        if (enabled && stage == CinemachineCore.Stage.Body)
+        {
+            var pos = state.RawPosition;
+            pos.y = m_YPosition;
+            state.RawPosition = pos;
+        }
     }
 }
-
