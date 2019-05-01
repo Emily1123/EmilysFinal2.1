@@ -1095,8 +1095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c828823c9b88944e8bd281796cf3e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 2026183227}
+  player2: {fileID: 2026183226}
   player1Tag: {fileID: 736039119}
   player2Tag: {fileID: 2031300375}
   timerText: {fileID: 873900044}
