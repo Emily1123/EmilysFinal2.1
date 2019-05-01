@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Fighter : MonoBehaviour
 {
     public enum PlayerIndex { Player1, Player2, PlayerAI };
-
+    
+    public AIManager manager;
     public static float MAX_HEALTH = 100f;
-
+    
     public float health = MAX_HEALTH;
     public string fighterName;
     public bool enable;
@@ -15,23 +17,18 @@ public class Fighter : MonoBehaviour
     public Collider[] colliders;
     public PlayerIndex playerIndex;
     public FighterStates currentState = FighterStates.Idle;
-
     public Fighter opponent;
-    protected Animator animator;
-
+    public Animator animator;
+    
     private Rigidbody _myBody;
     private AudioSource _audioPlayer;
 
-    private float _random;
-    private float _randomSetTime;
-
     void Start()
     {
-        StartCoroutine(DisableAfterDelay(0f));
+        //StartCoroutine(DisableAfterDelay(0f, null));
         _myBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         _audioPlayer = GetComponent<AudioSource>();
-
         switch (playerIndex)
         {
             case PlayerIndex.Player1:
@@ -44,17 +41,18 @@ public class Fighter : MonoBehaviour
 
             case PlayerIndex.PlayerAI:
                 axisPrefix = "AI";
+                GetComponent<Combos>().enabled = false;
                 break;
         }
     }
-    public IEnumerator DisableAfterDelay(float seconds)
+
+    void EnableColliders(bool status)
     {
-        yield return new WaitForSeconds(seconds);
         foreach (Collider collider in colliders)
         {
-            collider.enabled = false;
+            collider.enabled = status;
         }
-    }
+    } 
 
     public void playSound(AudioClip sound)
     {
@@ -91,22 +89,21 @@ public class Fighter : MonoBehaviour
         }
 
         if (Input.GetButtonDown(axisPrefix + "Dodge"))
-        {
-            animator.SetTrigger(axisPrefix + "Dodge");
+        { 
+            //animator.SetTrigger(axisPrefix + "Dodge");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Punch")))
         {
-            
             foreach (Collider collider in colliders)
             {
                 if (collider.tag == "punch")
                 {
                     collider.enabled = true;
+                    StartCoroutine(DisableAfterDelay(1f, collider));
                 }
-                StartCoroutine(DisableAfterDelay(1f));
             }
-            animator.SetTrigger(axisPrefix + "Punch");
+            //animator.SetTrigger(axisPrefix + "Punch");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Kick")))
@@ -116,10 +113,10 @@ public class Fighter : MonoBehaviour
                 if (collider.tag == "kick")
                 {
                     collider.enabled = true;
+                    StartCoroutine(DisableAfterDelay(1f, collider));
                 }
-                StartCoroutine(DisableAfterDelay(1f));
             }
-            animator.SetTrigger(axisPrefix + "Kick");
+            //animator.SetTrigger(axisPrefix + "Kick");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Ultimate")))
@@ -129,8 +126,8 @@ public class Fighter : MonoBehaviour
                 if (collider.tag == "ultimate")
                 {
                     collider.enabled = true;
+                    StartCoroutine(DisableAfterDelay(1f, collider));
                 }
-                StartCoroutine(DisableAfterDelay(1f));
             }
             animator.SetTrigger(axisPrefix + "Ultimate");
         }
@@ -138,15 +135,13 @@ public class Fighter : MonoBehaviour
 
     public void UpdateAiInput()
     {
-        animator.SetBool("AIOpponentAttacking", opponent.Attacking);
-        animator.SetFloat("AIDistanceToOpponent", GetDistanceToOpponennt());
+        manager.AIInput();
+    }
 
-        if (Time.time - _randomSetTime > 1)
-        {
-            _random = Random.value;
-            _randomSetTime = Time.time;
-        }
-        animator.SetFloat("AIRandom", _random);
+    public IEnumerator DisableAfterDelay(float seconds, Collider col)
+    {
+        yield return new WaitForSeconds(seconds);
+        col.enabled = false;
     }
 
     void Update()
@@ -179,11 +174,6 @@ public class Fighter : MonoBehaviour
         {
             animator.SetTrigger(axisPrefix + "Dead");
         }
-    }
-
-    private float GetDistanceToOpponennt()
-    {
-        return Mathf.Abs(transform.position.x - opponent.transform.position.x);
     }
 
     public virtual void Hurt(float damage)
