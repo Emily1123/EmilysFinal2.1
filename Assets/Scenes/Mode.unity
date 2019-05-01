@@ -112,6 +112,21 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &3216498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 955163019688448391, guid: 26f256644be389b46a2e3eb9d293b819,
+    type: 3}
+  m_PrefabInstance: {fileID: 955163019689559541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efbe4a3645971541b8e84e027894823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &278110316
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +839,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream
+=======
+      - m_Target: {fileID: 3216498}
+        m_MethodName: Set2Player
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+>>>>>>> Stashed changes
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1406286794
@@ -961,10 +990,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb26c5387d87995438efd0791e887066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Setting: {fileID: 11400000, guid: 74b887499e65b1044a89e148ddbc5992, type: 2}
   EasyToggle: {fileID: 0}
   NormalToggle: {fileID: 0}
   HardToggle: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1539697305
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,6 +1289,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream
+=======
+      - m_Target: {fileID: 3216498}
+        m_MethodName: SetSinglePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+>>>>>>> Stashed changes
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1838958330
@@ -1457,3 +1503,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846833244}
   m_CullTransparentMesh: 0
+<<<<<<< Updated upstream
+=======
+--- !u!1001 &955163019689559541
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 955163019688448388, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_Name
+      value: ModeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955163019688448390, guid: 26f256644be389b46a2e3eb9d293b819,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26f256644be389b46a2e3eb9d293b819, type: 3}
+>>>>>>> Stashed changes
