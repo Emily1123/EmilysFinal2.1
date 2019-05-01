@@ -28,34 +28,40 @@ public class AIManager : MonoBehaviour
 
     public void Update()
     {
-        decisionTimer = Time.deltaTime;
+        decisionTimer -= Time.deltaTime;
     }
 
     public void AIInput()
     {
         if (difficultyLevel == GameSetting.DifficultyLevel.Easy)
         {
-            decisionTimer = Random.Range(5, 6);
+            DoAnimations();
+            /*decisionTimer = Random.Range(5, 6);
             if (decisionTimer <= 0)
             {
                 DoAnimations();
             }
+            */
         }
         if (difficultyLevel == GameSetting.DifficultyLevel.Normal)
         {
-            decisionTimer = Random.Range(3, 4);
+            DoAnimations();
+            /*decisionTimer = Random.Range(3, 4);
             if (decisionTimer <= 0)
             {
                 DoAnimations();
             }
+            */
         }
         if (difficultyLevel == GameSetting.DifficultyLevel.Hard)
         {
-            decisionTimer = Random.Range(0, 2);
+            DoAnimations();
+            /*decisionTimer = Random.Range(0, 2);
             if (decisionTimer <= 0)
             {
                 DoAnimations();
             }
+            */
         }
     }
 
