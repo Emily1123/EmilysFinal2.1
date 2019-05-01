@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Manager;
-    public List<Fighter> players;
+    public static GameManager manager;
+
     public int roundTime;
     private float _lastTimeUpdate;
     private bool _battleStarted;
     private bool _battleEnded;
 
-    public bool isthereP2;
     public Fighter player1;
     public Fighter player2;
 
@@ -22,8 +21,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Manager == null) Manager = this;
-        else Destroy(this);
+        manager = this;
+        if (SelectMode.Instance.isthereP2 == true)
+        {
+            player2.playerIndex = Fighter.PlayerIndex.Player2;
+        }
+        else if (SelectMode.Instance.isthereP2 == false)
+        {
+            player2.playerIndex = Fighter.PlayerIndex.PlayerAI;
+        }
     }
 
     void Start()
@@ -40,10 +46,17 @@ public class GameManager : MonoBehaviour
             player1.enable = true;
             player1.UpdateHumanInput();
 
-            if (isthereP2 == true)
+            if (SelectMode.Instance.isthereP2 == true)
             {
                 player2.enable = true;
+                player2.playerIndex = Fighter.PlayerIndex.Player2;
                 player2.UpdateHumanInput();
+            }
+            else if (SelectMode.Instance.isthereP2 == false)
+            {
+                player2.enable = true;
+                player2.playerIndex = Fighter.PlayerIndex.PlayerAI;
+                player2.UpdateAiInput();
             }
 
             AudioManager.PlaySound(backgroundMusic, musicPlayer);
