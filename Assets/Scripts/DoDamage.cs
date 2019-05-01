@@ -15,12 +15,9 @@ public class DoDamage : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Fighter somebody = other.gameObject.GetComponent<Fighter>();
-        if (owner.Attacking)
+        if (somebody != owner && somebody != null)
         {
-            if (somebody != null && somebody != owner)
-            {
-                somebody.Hurt(damage);
-            }
+            somebody.Hurt(damage);
         }
     }
 }

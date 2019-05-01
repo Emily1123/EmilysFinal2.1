@@ -47,7 +47,7 @@ public class Combos : MonoBehaviour
                 skip = true;
                 Attack(c.comboAttack);
                 animator.SetTrigger(owner.axisPrefix + c.comboAttack.name);
-                animator.ResetTrigger(owner.axisPrefix + c.comboAttack.name);
+                //animator.ResetTrigger(owner.axisPrefix + c.comboAttack.name);
                 ResetCombos();
             });
         }

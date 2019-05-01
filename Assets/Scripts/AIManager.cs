@@ -12,7 +12,7 @@ public class AIManager : MonoBehaviour
     public Fighter fighter;
     public float stoppingDistance;
 
-    private float decisionTimer;
+    private float timeLeft;
     private int AttackMove;
     private int PreviousAttackMove;
 
@@ -22,46 +22,47 @@ public class AIManager : MonoBehaviour
         {
             this.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animation/AI Animation Controller") as RuntimeAnimatorController;
             difficultyLevel = Setting.Get_DifficultyLevel();
-            decisionTimer = 0;
+            ResetTime();
+            StartCoroutine("LoseTime");
         }
     }
 
-    public void Update()
+    void ResetTime()
     {
-        decisionTimer -= Time.deltaTime;
+        timeLeft = 10;
+    }
+
+    IEnumerator LoseTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            timeLeft--;
+        }
     }
 
     public void AIInput()
     {
         if (difficultyLevel == GameSetting.DifficultyLevel.Easy)
         {
-            DoAnimations();
-            /*decisionTimer = Random.Range(5, 6);
-            if (decisionTimer <= 0)
+            if (timeLeft <= 6)
             {
                 DoAnimations();
             }
-            */
         }
         if (difficultyLevel == GameSetting.DifficultyLevel.Normal)
         {
-            DoAnimations();
-            /*decisionTimer = Random.Range(3, 4);
-            if (decisionTimer <= 0)
+            if (timeLeft <= 7)
             {
                 DoAnimations();
             }
-            */
         }
         if (difficultyLevel == GameSetting.DifficultyLevel.Hard)
         {
-            DoAnimations();
-            /*decisionTimer = Random.Range(0, 2);
-            if (decisionTimer <= 0)
+            if (timeLeft <= 9)
             {
                 DoAnimations();
             }
-            */
         }
     }
 
@@ -113,6 +114,7 @@ public class AIManager : MonoBehaviour
                             StartCoroutine(fighter.DisableAfterDelay(1f, collider));
                         }
                     }
+                    ResetTime();
                     break;
                 case (2):
                     PreviousAttackMove = 2;
@@ -125,6 +127,7 @@ public class AIManager : MonoBehaviour
                             StartCoroutine(fighter.DisableAfterDelay(1f, collider));
                         }
                     }
+                    ResetTime();
                     break;
                 case (3):
                     PreviousAttackMove = 3;
@@ -137,14 +140,17 @@ public class AIManager : MonoBehaviour
                             StartCoroutine(fighter.DisableAfterDelay(1f, collider));
                         }
                     }
+                    ResetTime();
                     break;
                 case (4):
                     PreviousAttackMove = 4;
                     fighter.animator.SetTrigger("Dodge");
+                    ResetTime();
                     break;
                 case (5):
                     PreviousAttackMove = 5;
                     fighter.animator.SetBool("Duck", true);
+                    ResetTime();
                     break;
             }
         }

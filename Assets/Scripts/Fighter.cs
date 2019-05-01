@@ -90,7 +90,7 @@ public class Fighter : MonoBehaviour
 
         if (Input.GetButtonDown(axisPrefix + "Dodge"))
         { 
-            //animator.SetTrigger(axisPrefix + "Dodge");
+            animator.SetTrigger(axisPrefix + "Dodge");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Punch")))
@@ -103,7 +103,7 @@ public class Fighter : MonoBehaviour
                     StartCoroutine(DisableAfterDelay(1f, collider));
                 }
             }
-            //animator.SetTrigger(axisPrefix + "Punch");
+            animator.SetTrigger(axisPrefix + "Punch");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Kick")))
@@ -116,7 +116,7 @@ public class Fighter : MonoBehaviour
                     StartCoroutine(DisableAfterDelay(1f, collider));
                 }
             }
-            //animator.SetTrigger(axisPrefix + "Kick");
+            animator.SetTrigger(axisPrefix + "Kick");
         }
 
         if (Input.GetButtonDown((axisPrefix + "Ultimate")))
@@ -176,7 +176,7 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    public virtual void Hurt(float damage)
+    public void Hurt(float damage)
     {
         if (!Invulnerable)
         {
