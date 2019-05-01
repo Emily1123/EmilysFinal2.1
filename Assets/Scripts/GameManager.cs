@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Manager;
+    public List<Fighter> players;
     public int roundTime;
     private float _lastTimeUpdate;
     private bool _battleStarted;
@@ -17,6 +19,12 @@ public class GameManager : MonoBehaviour
     public BannerController banner;
     public AudioSource musicPlayer;
     public AudioClip backgroundMusic;
+
+    void Awake()
+    {
+        if (Manager == null) Manager = this;
+        else Destroy(this);
+    }
 
     void Start()
     {
