@@ -4091,7 +4091,7 @@ Transform:
   m_Children:
   - {fileID: 43761564}
   m_Father: {fileID: 1080006234}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025672810
 GameObject:
@@ -4295,7 +4295,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4527,6 +4527,8 @@ GameObject:
   - component: {fileID: 1080006238}
   - component: {fileID: 1080006239}
   - component: {fileID: 1080006237}
+  - component: {fileID: 1080006240}
+  - component: {fileID: 1080006241}
   m_Layer: 0
   m_Name: Male
   m_TagString: Player
@@ -4546,6 +4548,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1747003957}
   - {fileID: 1406853952}
   - {fileID: 1007300699}
   m_Father: {fileID: 1880261495}
@@ -4563,6 +4566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a850fe2ae260ec845a4a1c9210a851ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1080006240}
   health: 100
   fighterName: Player 2
   enable: 0
@@ -4576,6 +4580,7 @@ MonoBehaviour:
   playerIndex: 1
   currentState: 0
   opponent: {fileID: 2038435890}
+  animator: {fileID: 0}
 --- !u!95 &1080006236
 Animator:
   serializedVersion: 3
@@ -4722,6 +4727,75 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1080006240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080006233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef50398a96e3b242b367050be9f11e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Setting: {fileID: 11400000, guid: 74b887499e65b1044a89e148ddbc5992, type: 2}
+  opponent: {fileID: 2038435888}
+  fighter: {fileID: 1080006235}
+  stoppingDistance: 1
+--- !u!114 &1080006241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080006233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d392f7f5fe137c4d9f9ce41935e40a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1080006235}
+  punchAttack:
+    name: Hook
+    length: 2
+  kickAttack:
+    name: Roundhouse Kick
+    length: 2.133
+  dodgeAttack:
+    name: Standing Dodge Backward
+    length: 1.633
+  combos:
+  - name: Fireball
+    inputs:
+    - type: 2
+    - type: 0
+    comboAttack:
+      name: Fireball
+      length: 3.367
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - name: Headbutt
+    inputs:
+    - type: 1
+    - type: 0
+    comboAttack:
+      name: Headbutt
+      length: 2.1
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  comboLeeway: 0.5
+  projectile: {fileID: 6504768115969939230, guid: 6b02adcbcc72b0c41b562c8cf2e6d2a6,
+    type: 3}
+  projectileStart: {fileID: 1113904879}
+  projectileSpeed: 50
+  animator: {fileID: 0}
 --- !u!1 &1091008565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4812,6 +4886,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2142138955}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1113904879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113904880}
+  m_Layer: 0
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113904880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113904879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.053, y: 1.218, z: 0.346}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2038435889}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1133076903
 GameObject:
@@ -5382,7 +5486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2038435889}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1381429777
 SkinnedMeshRenderer:
@@ -5673,7 +5777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1080006234}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1406853953
 SkinnedMeshRenderer:
@@ -5923,7 +6027,6 @@ MonoBehaviour:
   - {fileID: 2038435890}
   - {fileID: 1080006235}
   roundTime: 99
-  isthereP2: 1
   player1: {fileID: 2038435890}
   player2: {fileID: 1080006235}
   banner: {fileID: 1968270484}
@@ -6051,7 +6154,7 @@ Transform:
   m_Children:
   - {fileID: 717401888}
   m_Father: {fileID: 2038435889}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481547444
 GameObject:
@@ -6835,6 +6938,36 @@ Transform:
   - {fileID: 1263058614}
   m_Father: {fileID: 1569456876}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1747003956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747003957}
+  m_Layer: 0
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1747003957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747003956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.37, z: 0.381}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1080006234}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764536225
 GameObject:
@@ -8327,9 +8460,19 @@ PrefabInstance:
       propertyPath: m_Targets.Array.data[1].target
       value: 
       objectReference: {fileID: 2038435889}
+    - target: {fileID: 4503717538978647170, guid: 9f7457e56ff5fbe4ca8659c4a3b06455,
+        type: 3}
+      propertyPath: m_PositionMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4503717538648037036, guid: 9f7457e56ff5fbe4ca8659c4a3b06455,
         type: 3}
       propertyPath: m_LookaheadIgnoreY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503717538648037036, guid: 9f7457e56ff5fbe4ca8659c4a3b06455,
+        type: 3}
+      propertyPath: m_LookaheadTime
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8464,6 +8607,7 @@ GameObject:
   - component: {fileID: 2038435894}
   - component: {fileID: 2038435892}
   - component: {fileID: 2038435891}
+  - component: {fileID: 2038435895}
   m_Layer: 0
   m_Name: Female
   m_TagString: Player
@@ -8483,6 +8627,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.119, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1113904880}
   - {fileID: 1381429776}
   - {fileID: 1472715506}
   m_Father: {fileID: 125744551}
@@ -8500,19 +8645,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a850fe2ae260ec845a4a1c9210a851ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   health: 100
   fighterName: Player 1
   enable: 0
   axisPrefix: 
   colliders:
-  - {fileID: 683083497}
-  - {fileID: 949445805}
-  - {fileID: 523752105}
-  - {fileID: 530654761}
-  - {fileID: 420750334}
+  - {fileID: 663752747}
+  - {fileID: 490029145}
+  - {fileID: 193434837}
+  - {fileID: 261546296}
+  - {fileID: 1481547446}
   playerIndex: 0
   currentState: 0
   opponent: {fileID: 1080006235}
+  animator: {fileID: 0}
 --- !u!95 &2038435891
 Animator:
   serializedVersion: 3
@@ -8658,6 +8805,59 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &2038435895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038435888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d392f7f5fe137c4d9f9ce41935e40a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 2038435890}
+  punchAttack:
+    name: Hook
+    length: 2
+  kickAttack:
+    name: Roundhouse Kick
+    length: 2.133
+  dodgeAttack:
+    name: Standing Dodge Backward
+    length: 1.633
+  combos:
+  - name: Fireball
+    inputs:
+    - type: 2
+    - type: 0
+    comboAttack:
+      name: Fireball
+      length: 3.367
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - name: Headbutt
+    inputs:
+    - type: 1
+    - type: 0
+    comboAttack:
+      name: Headbutt
+      length: 2.1
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  comboLeeway: 0.5
+  projectile: {fileID: 6504768115969939230, guid: 6b02adcbcc72b0c41b562c8cf2e6d2a6,
+    type: 3}
+  projectileStart: {fileID: 1113904879}
+  projectileSpeed: 50
+  animator: {fileID: 0}
 --- !u!1 &2044549476
 GameObject:
   m_ObjectHideFlags: 0
