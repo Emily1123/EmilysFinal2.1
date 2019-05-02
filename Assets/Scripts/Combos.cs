@@ -47,10 +47,24 @@ public class Combos : MonoBehaviour
                 skip = true;
                 Attack(c.comboAttack);
                 animator.SetTrigger(owner.axisPrefix + c.comboAttack.name);
+                foreach (Collider collider in owner.colliders)
+                {
+                    if (collider.tag == "headbutt")
+                    {
+                        collider.enabled = true;
+                        StartCoroutine(DisableAfterDelay(1f, collider));
+                    }
+                }
                 //animator.ResetTrigger(owner.axisPrefix + c.comboAttack.name);
                 ResetCombos();
             });
         }
+    }
+
+    public IEnumerator DisableAfterDelay(float seconds, Collider col)
+    {
+        yield return new WaitForSeconds(seconds);
+        col.enabled = false;
     }
 
     void Update()

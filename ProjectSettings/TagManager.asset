@@ -8,6 +8,7 @@ TagManager:
   - punch
   - ultimate
   - music
+  - headbutt
   layers:
   - Default
   - TransparentFX
